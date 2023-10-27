@@ -2,14 +2,18 @@
   "name": "todolist-v1",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./src/app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node src/app.ts",
+    "build": "rimraf dist && tsc && npm run copy-files",
+    "copy-files": "cp -r src/public dist/public && cp -r src/views dist/views",
+    "start": "node dist/app.js",
+    "serve": "npm run build && npm run start"
   },
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "12.16.3"
+    "node": "20.6.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -20,5 +24,13 @@
     "lodash": "^4.17.19",
     "mongoose": "^5.9.28",
     "nodemon": "^2.0.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.20",
+    "@types/express-handlebars": "^6.0.0",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.8.9",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1"
   }
 }
